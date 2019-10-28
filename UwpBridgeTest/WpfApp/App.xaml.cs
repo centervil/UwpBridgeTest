@@ -13,5 +13,10 @@ namespace WpfApp
     /// </summary>
     public partial class App : Application
     {
+        public static string[] ExeParams { get; private set; }
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            ExeParams = e.Args;
+        }
     }
 }
