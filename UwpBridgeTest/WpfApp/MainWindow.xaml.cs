@@ -23,6 +23,8 @@ namespace WpfApp
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += (s, e) => { TitleText.Text = "test"; };
         }
+
     }
 }
