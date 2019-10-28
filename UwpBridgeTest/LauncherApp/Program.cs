@@ -1,12 +1,27 @@
 ﻿using System;
-
-namespace LauncherApp
+using System.IO;
+using System.Diagnostics;
+using System.Reflection;
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
+        try
         {
-            Console.WriteLine("Hello World!");
+
+            if (args.Length != 0)
+            {
+                string executable = args[2];
+                string path = Assembly.GetExecutingAssembly().CodeBase;
+                string directory = Path.GetDirectoryName(path);
+                Process.Start(directory + "\\" + executable);
+            }
         }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            Console.ReadLine();
+        }
+
     }
 }
