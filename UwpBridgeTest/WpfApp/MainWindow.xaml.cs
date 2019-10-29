@@ -23,13 +23,6 @@ namespace WpfApp
         public MainWindow()
         {
             InitializeComponent();
-            Loaded += (s, e) =>
-            {
-                if (App.ExeParams.Length != 0)
-                {
-                    TitleText.Text = App.ExeParams[0];
-                }
-            };
         }
 
     }
