@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="WpfApp_Uwp.MainPage"
+    x:Class="WpfUwp.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:WpfApp_Uwp"

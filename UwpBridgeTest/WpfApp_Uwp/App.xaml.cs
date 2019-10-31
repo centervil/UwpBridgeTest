@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using WpfUwp;
 
 namespace WpfApp_Uwp
 {
@@ -30,6 +31,7 @@ namespace WpfApp_Uwp
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            ExeParams = new string[1];
         }
 
         /// <summary>
@@ -39,6 +41,7 @@ namespace WpfApp_Uwp
         /// <param name="e">起動の要求とプロセスの詳細を表示します。</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            ExeParams[0] = "Start UWP!";
             Frame rootFrame = Window.Current.Content as Frame;
 
             // ウィンドウに既にコンテンツが表示されている場合は、アプリケーションの初期化を繰り返さずに、
@@ -96,5 +99,7 @@ namespace WpfApp_Uwp
             //TODO: アプリケーションの状態を保存してバックグラウンドの動作があれば停止します
             deferral.Complete();
         }
+
+        public static string[] ExeParams { get; private set; }
     }
 }
