@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using UwpApp.Core.Models;
 using UwpApp.Core.Services;
 using UwpApp.Helpers;
+using Windows.ApplicationModel;
 
 namespace UwpApp.ViewModels
 {
@@ -26,6 +27,15 @@ namespace UwpApp.ViewModels
         {
             var data = await SampleDataService.GetContentGridDataAsync();
             Item = data.First(i => i.OrderID == orderID);
+        }
+
+        private ICommand _launchCommand;
+
+        public ICommand LaunchCommand => _launchCommand ?? (_launchCommand = new RelayCommand(async () => { await OnLaunchedAsync(); } ));
+
+        public async Task OnLaunchedAsync()
+        {
+            await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync(Item.ExePath);
         }
     }
 }

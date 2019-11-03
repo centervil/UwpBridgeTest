@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Input;
 
 namespace UwpApp.Core.Models
 {
@@ -42,5 +43,7 @@ namespace UwpApp.Core.Models
         }
 
         public string ShortDescription => $"Order ID: {OrderID}";
+
+        public string ExePath { get; set; }
     }
 }

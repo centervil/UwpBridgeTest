@@ -52,6 +52,7 @@ namespace UwpApp.Core.Services
                             OrderTotal = 814.50,
                             Status = "Shipped",
                             SymbolCode = 57643,
+                            ExePath = "WpfApp",
                             Details = new List<SampleOrderDetail>()
                             {
                                 new SampleOrderDetail()

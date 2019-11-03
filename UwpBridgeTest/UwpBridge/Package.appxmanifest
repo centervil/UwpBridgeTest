@@ -43,7 +43,7 @@
       <Extensions>
         <desktop:Extension Category="windows.fullTrustProcess" Executable="LauncherApp\LauncherApp.exe">
           <desktop:FullTrustProcess>
-            <desktop:ParameterGroup GroupId="WpfApp" Parameters="WpfApp\\WpfApp.exe" />
+            <desktop:ParameterGroup GroupId="WpfApp" Parameters="WpfApp\WpfApp.exe" />
           </desktop:FullTrustProcess>
         </desktop:Extension>
       </Extensions>
