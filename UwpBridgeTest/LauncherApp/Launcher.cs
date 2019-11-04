@@ -11,10 +11,11 @@ class Launcher
             if (args.Length != 0)
             {
                 string relativeExePath = args[2];
-                string path = Assembly.GetExecutingAssembly().CodeBase;
+                string path = Assembly.GetExecutingAssembly().Location;
                 string directory = Path.GetDirectoryName(path);
                 string upperDirectory = directory.Substring(0, directory.LastIndexOf(@"\"));
-                Process.Start(upperDirectory + "\\" + relativeExePath);
+                string launchPath = upperDirectory + "\\" + relativeExePath;
+                Process.Start(launchPath);
             }
         }
         catch (Exception e)
