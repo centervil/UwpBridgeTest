@@ -13,9 +13,13 @@ class Launcher
                 string relativeExePath = args[2];
                 string path = Assembly.GetExecutingAssembly().Location;
                 string directory = Path.GetDirectoryName(path);
+
                 string upperDirectory = directory.Substring(0, directory.LastIndexOf(@"\"));
                 string launchPath = upperDirectory + "\\" + relativeExePath;
-                Process.Start(launchPath);
+
+                var argumentBuilder = new ArgumentBuilder(relativeExePath);
+                string arguments = argumentBuilder.StrParamaters;
+                Process.Start(launchPath, arguments);
             }
         }
         catch (Exception e)
