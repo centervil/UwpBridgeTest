@@ -46,6 +46,9 @@
             <desktop:ParameterGroup GroupId="WpfApp" Parameters="WpfApp\WpfApp.exe" />
           </desktop:FullTrustProcess>
         </desktop:Extension>
+        <uap:Extension Category="windows.appService">
+          <uap:AppService Name="InProcessAppService"/>
+        </uap:Extension>
       </Extensions>
     </Application>
   </Applications>
