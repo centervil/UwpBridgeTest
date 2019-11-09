@@ -77,6 +77,20 @@
                         IsEnabled="True"
                         Command="{x:Bind ViewModel.LaunchCommand, Mode=OneWay}"
                         Content="Launch"/>
+                    <StackPanel Orientation="Horizontal">
+                    <Button
+                        x:Name="SendCommandTest"
+                        Style="{ThemeResource AccentButtonStyle}"
+                        Margin="{StaticResource XXSmallTopMargin}"
+                        IsEnabled="True"
+                        Command="{x:Bind ViewModel.SendCommand, Mode=OneWay}"
+                        Content="SendCommandTest"/>
+                    <TextBlock
+                        Text="{x:Bind ViewModel.SendResult, Mode=TwoWay}"
+                        Style="{ThemeResource BaseTextBlockStyle}"
+                        Margin="{StaticResource SmallLeftMargin}"
+                        VerticalAlignment="Center"/>
+                    </StackPanel>
                 </StackPanel>
             </RelativePanel>
 
