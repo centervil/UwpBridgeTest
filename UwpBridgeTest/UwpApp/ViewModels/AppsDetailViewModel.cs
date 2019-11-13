@@ -37,7 +37,10 @@ namespace UwpApp.ViewModels
         private AppServiceConnection _appServiceConnection;
         private string sendResult = "initial";
 
-        public ICommand LaunchCommand => _launchCommand ?? (_launchCommand = new RelayCommand(async () => { await OnLaunchedAsync(); }));
+        public ICommand LaunchCommand => _launchCommand ?? (_launchCommand = new RelayCommand(async () => {
+            await OnLaunchedAsync();
+            await OnSendCommanAsync();
+        }));
         public ICommand SendCommand => _sendCommand ?? (_sendCommand = new RelayCommand(async () => { await OnSendCommanAsync(); }));
 
 
@@ -67,13 +70,14 @@ namespace UwpApp.ViewModels
             var res = await _appServiceConnection.SendMessageAsync(new ValueSet
             {
                 ["Input"] = "AppServiceTest",
+                ["Now"] = DateTime.Now.ToString()
             });
 
-            var s = res.Message["Result"] as string;
-            if (s != null)
-            {
-                SendResult = s as string;
-            }
+            //var s = res.Message["Result"] as string;
+            //if (s != null)
+            //{
+            //    SendResult = s as string;
+            //}
         }
 
         public string SendResult

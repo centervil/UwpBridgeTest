@@ -74,17 +74,17 @@ namespace UwpApp
 
         private async void AppServiceConnection_RequestReceived(AppServiceConnection sender, AppServiceRequestReceivedEventArgs args)
         {
-            var d = args.GetDeferral();
+            //var d = args.GetDeferral();
 
-            var message = args.Request.Message;
-            var input = message["Input"] as string;
+            //var message = args.Request.Message;
+            //var input = message["Input"] as string;
 
-            //await MainPage.Current?.SetTextAsync(input);
-            await args.Request.SendResponseAsync(new ValueSet
-            {
-                ["Result"] = $"Accept: {DateTime.Now}"
-            });
-            d.Complete();
+            ////await MainPage.Current?.SetTextAsync(input);
+            //await args.Request.SendResponseAsync(new ValueSet
+            //{
+            //    ["Result"] = $"Accept: {DateTime.Now}"
+            //});
+            //d.Complete();
         }
 
         private void TaskInstance_Canceled(IBackgroundTaskInstance sender, BackgroundTaskCancellationReason reason)

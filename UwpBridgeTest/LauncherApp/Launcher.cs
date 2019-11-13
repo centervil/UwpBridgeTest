@@ -2,31 +2,41 @@
 using System.IO;
 using System.Diagnostics;
 using System.Reflection;
-class Launcher
+
+namespace LauncherApp
 {
-    static void Main(string[] args)
+    class Launcher
     {
-        try
+        static void Main(string[] args)
         {
-            if (args.Length != 0)
+            var receiver = new AppService();
+            try
             {
-                string relativeExePath = args[2];
-                string path = Assembly.GetExecutingAssembly().Location;
-                string directory = Path.GetDirectoryName(path);
+                if (args.Length != 0)
+                {
+                    string relativeExePath = args[2];
+                    string path = Assembly.GetExecutingAssembly().Location;
+                    string directory = Path.GetDirectoryName(path);
 
-                string upperDirectory = directory.Substring(0, directory.LastIndexOf(@"\"));
-                string launchPath = upperDirectory + "\\" + relativeExePath;
+                    string upperDirectory = directory.Substring(0, directory.LastIndexOf(@"\"));
+                    string launchPath = upperDirectory + "\\" + relativeExePath;
 
-                var argumentBuilder = new ArgumentBuilder(relativeExePath);
-                string arguments = argumentBuilder.StrParamaters;
-                Process.Start(launchPath, arguments);
+                    //for (;;)
+                    //{
+                    //    if (receiver.ReceivedStr != null) 
+                    //        break;
+                    //}
+                    var argumentBuilder = new ArgumentBuilder(relativeExePath, receiver.ReceivedStr);
+                    string arguments = argumentBuilder.StrParamaters;
+                    Process.Start(launchPath, arguments);
+                }
             }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-            Console.ReadLine();
-        }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadLine();
+            }
 
+        }
     }
 }
