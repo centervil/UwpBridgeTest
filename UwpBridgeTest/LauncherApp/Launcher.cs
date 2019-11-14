@@ -21,11 +21,11 @@ namespace LauncherApp
                     string upperDirectory = directory.Substring(0, directory.LastIndexOf(@"\"));
                     string launchPath = upperDirectory + "\\" + relativeExePath;
 
-                    //for (;;)
-                    //{
-                    //    if (receiver.ReceivedStr != null) 
-                    //        break;
-                    //}
+                    for (; ; )
+                    {
+                        if (receiver.ReceivedStr != null)
+                            break;
+                    }
                     var argumentBuilder = new ArgumentBuilder(relativeExePath, receiver.ReceivedStr);
                     string arguments = argumentBuilder.StrParamaters;
                     Process.Start(launchPath, arguments);

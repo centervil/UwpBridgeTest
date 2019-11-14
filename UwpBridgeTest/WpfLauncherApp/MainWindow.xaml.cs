@@ -26,6 +26,7 @@ namespace WpfLauncherApp
             var appServiceConnection = new AppServiceConnection();
             appServiceConnection.AppServiceName = "InProcessAppService";
             appServiceConnection.PackageFamilyName = Package.Current.Id.FamilyName;
+            //appServiceConnection.PackageFamilyName = "57872c66-6d9b-455c-8253-2697981c58bc_7pfbj2pspzemc";
             appServiceConnection.RequestReceived += AppServiceConnection_RequestReceived;
             var r = await appServiceConnection.OpenAsync() == AppServiceConnectionStatus.Success;
             if (r)
@@ -47,6 +48,7 @@ namespace WpfLauncherApp
             var res = await _appServiceConnection.SendMessageAsync(new ValueSet
             {
                 ["Input"] = inputTextBox.Text,
+                ["Now"] = DateTime.Now.ToString()
             });
 
             logTextBlock.Text = res.Message["Result"] as string;
@@ -54,6 +56,7 @@ namespace WpfLauncherApp
 
         private void AppServiceConnection_RequestReceived(AppServiceConnection sender, AppServiceRequestReceivedEventArgs args)
         {
+            Debug.WriteLine("AppService_Received");
             void setText()
             {
                 logTextBlock.Text = (string)args.Request.Message["Now"];
@@ -69,9 +72,9 @@ namespace WpfLauncherApp
             }
         }
 
-        private async void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            await ConnectAsync();
-        }
+        //private async void Window_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    await ConnectAsync();
+        //}
     }
 }

@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow"
         Height="350"
-        Width="525"
-        Loaded="Window_Loaded">
+        Width="525">
+    <!--Loaded="Window_Loaded"-->
     <StackPanel>
         <TextBox x:Name="inputTextBox" />
         <Button Content="Send"

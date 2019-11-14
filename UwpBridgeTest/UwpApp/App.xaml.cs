@@ -76,14 +76,16 @@ namespace UwpApp
         {
             //var d = args.GetDeferral();
 
-            //var message = args.Request.Message;
-            //var input = message["Input"] as string;
+            var message = args.Request.Message;
+            var input = message["Input"] as string;
+            //var input = "input";
+            var nowTime = message["Now"] as string;
 
-            ////await MainPage.Current?.SetTextAsync(input);
-            //await args.Request.SendResponseAsync(new ValueSet
-            //{
-            //    ["Result"] = $"Accept: {DateTime.Now}"
-            //});
+            //await MainPage.Current?.SetTextAsync(input);
+            await args.Request.SendResponseAsync(new ValueSet
+            {
+                ["Result"] = $"Accept: {input} {nowTime}"
+            });
             //d.Complete();
         }
 

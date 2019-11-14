@@ -79,6 +79,7 @@
     <ProjectReference Include="..\WpfApp\WpfApp.csproj">
       <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
     </ProjectReference>
+    <ProjectReference Include="..\WpfLauncherApp\WpfLauncherApp.csproj" />
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
 </Project>

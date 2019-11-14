@@ -41,7 +41,7 @@
         <uap:SplashScreen Image="Images\SplashScreen.png" />
       </uap:VisualElements>
       <Extensions>
-        <desktop:Extension Category="windows.fullTrustProcess" Executable="LauncherApp\LauncherApp.exe">
+        <desktop:Extension Category="windows.fullTrustProcess" Executable="WpfLauncherApp\WpfLauncherApp.exe">
           <desktop:FullTrustProcess>
             <desktop:ParameterGroup GroupId="WpfApp" Parameters="WpfApp\WpfApp.exe" />
           </desktop:FullTrustProcess>

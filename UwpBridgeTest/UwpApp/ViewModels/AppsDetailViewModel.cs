@@ -46,18 +46,17 @@ namespace UwpApp.ViewModels
 
         public async Task OnLaunchedAsync()
         {
-            await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync(Item.ExePath);
+            await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync(/*Item.ExePath*/);
         }
 
         private async Task OnSendCommanAsync()
         {
             if (_appServiceConnection == null)
             {
-                _appServiceConnection = new AppServiceConnection
-                {
-                    AppServiceName = "InProcessAppService",
-                    PackageFamilyName = Package.Current.Id.FamilyName
-                };
+                _appServiceConnection = new AppServiceConnection();
+                _appServiceConnection.AppServiceName = "InProcessAppService";
+                _appServiceConnection.PackageFamilyName = Package.Current.Id.FamilyName;
+                
                 var r = await _appServiceConnection.OpenAsync();
                 if (r != AppServiceConnectionStatus.Success)
                 {
@@ -73,11 +72,11 @@ namespace UwpApp.ViewModels
                 ["Now"] = DateTime.Now.ToString()
             });
 
-            //var s = res.Message["Result"] as string;
-            //if (s != null)
-            //{
-            //    SendResult = s as string;
-            //}
+            var s = res.Message["Result"] as string;
+            if (s != null)
+            {
+                SendResult = s as string;
+            }
         }
 
         public string SendResult
